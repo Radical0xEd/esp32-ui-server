@@ -1,0 +1,24 @@
+# java
+function sendCommand(command) {
+  fetch('http://<esp32-ip-address>/command', { // Replace <esp32-ip-address> with the ESP32's IP
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({ command: command }),
+  })
+    .then(response => response.text())
+    .then(data => {
+      console.log('Response:', data);
+    })
+    .catch(error => {
+      console.error('Error:', error);
+    });
+}
+
+# button
+<button onclick="sendCommand('led_on')">Turn LED On</button>
+<button onclick="sendCommand('led_off')">Turn LED Off</button>
+
+
+#
